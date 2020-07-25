@@ -1,28 +1,14 @@
 INSERT INTO model.username
-    (id,[login],[password])
+    ([login],[password])
 VALUES
-    (NEWID(), 'gesuvs', '123')
-
-SELECT TOP 1
-    username.id, username.[login]
-FROM model.username AS username
-ORDER BY username.created_at DESC;
+    ('jesus', '123')
 
 
-SELECT TOP 1
-    profile.id, profile.nickname
-FROM model.profile AS profile
-ORDER BY profile.created_at DESC;
-
-select *
-from model.profile;
-
-select *
-from model.username;
-
-DROP TABLE  model.profile;
+INSERT INTO model.post
+    (title, author, fk_profile)
+VALUES
+    ('teste', 'gesuvs', 'd5a3433e-f36b-1410-8e10-00d42744adf7')
 
 
-DELETE FROM model.profile
-
-DELETE FROM model.username
+SELECT *
+FROM model.post
