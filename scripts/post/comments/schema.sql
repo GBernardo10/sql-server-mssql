@@ -1,6 +1,6 @@
 CREATE TABLE model.comments
 (
-    id UNIQUEIDENTIFIER PRIMARY KEY,
+    id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT newsequentialid(),
     content NVARCHAR(MAX),
     author NVARCHAR(250),
     fk_post UNIQUEIDENTIFIER,
