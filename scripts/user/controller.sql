@@ -2,8 +2,8 @@
 
 CREATE OR ALTER PROC model.insert_profile_from_user
 AS
+BEGIN TRANSACTION;
 BEGIN TRY
-BEGIN TRAN
     SET NOCOUNT ON
     INSERT INTO model.profile
     (nickname, fk_username)
@@ -11,7 +11,6 @@ SELECT TOP 1
     username.[login], username.id
 FROM model.username AS username
 ORDER BY username.created_at DESC;
-    COMMIT TRAN
 END TRY
     BEGIN CATCH
     SELECT
@@ -20,6 +19,8 @@ END TRY
     IF @@TRANCOUNT > 0  
         ROLLBACK TRANSACTION;  
 END CATCH
+IF @@TRANCOUNT > 0  
+    COMMIT TRANSACTION;  
 GO
 
 
